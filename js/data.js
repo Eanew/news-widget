@@ -244,7 +244,7 @@ const mockNews = [
 const getMockNews = () => {
     return new Promise((onSuccess) => {
         setTimeout(() => {
-            onSuccess(news)
+            onSuccess(mockNews)
         }, 1000)
     })
 }

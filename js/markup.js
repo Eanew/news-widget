@@ -62,8 +62,8 @@ const getWidgetTemplate = news => {
     const toggleButtonTemplate = getToggleButtonTemplate(unreadNewsCount)
     const newsContent = news.length ? getNewsListTemplate(news) : getNoDataMessageTemplate()
 
-    return (`
-        <aside class="news-widget" aria-label="News widget" tabindex="-1">
+    return (
+        `<aside class="news-widget" aria-label="News widget" tabindex="-1">
             ${toggleButtonTemplate}
 
             <div class="news-widget__content news-widget__content--hidden" aria-label="News content" tabindex="0">
@@ -75,12 +75,17 @@ const getWidgetTemplate = news => {
                     ${newsContent}
                 </div>
             </div>
-        </aside>
-    `)
+        </aside>`
+    )
 }
 
 const createWidgetElement = (news = []) => {
+    const widgetTemplate = getWidgetTemplate(news)
+    const tempContainer = document.createElement(`div`)
 
+    tempContainer.innerHTML = widgetTemplate
+
+    return tempContainer.firstChild
 }
 
 export default createWidgetElement
